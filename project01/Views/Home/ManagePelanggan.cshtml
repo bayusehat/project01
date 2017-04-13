@@ -1,0 +1,112 @@
+﻿@model project01.Models.ViewModel.Pelanggan
+
+<div>
+    <h1>Data Pelanggan</h1>
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>Nomor ID</th>
+                <th>Nama</th>
+                <th>alamat</th>
+                <th>No. Telp 1</th>
+                <th>No. Telp 2</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var i in Model.UserProfile)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(m => i.no_id)</td>
+                    <td>@Html.DisplayFor(m => i.nama)</td>
+                    <td>@Html.DisplayFor(m => i.alamat)</td>
+                    <td>@Html.DisplayFor(m => i.no_tlp)</td>
+                    <td>@Html.DisplayFor(m => i.no_tlp2)</td>
+                    <td><a href="javascript:void(0)" class="lnkEdit">Edit</a></td>
+                    <td><a href="javascript:void(0)" class="'lnkDelete">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div id="divEdit" style="display:none">
+        <input type="hidden" id="hidID" />
+        <table>
+            <tr>
+                <td>Nomor ID</td>
+                <td><input type="text" id="txtLoginName" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Nama</td>
+                <td><input type="text" id="txtPassword" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>Alamat</td>
+                <td><input type="text" id="txtFirstName" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>No. Telp</td>
+                <td><input type="text" id="txtLastName" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td>No. Telp2</td>
+                <td><input type="text" id="txtLastName" class="form-control" /></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+$(function () {var initDialog = function (type) {
+var title = type;
+$("#divEdit").dialog({
+autoOpen: false,
+modal: true,
+title: type + ' User',
+width: 360,
+buttons: {
+Save: function () {
+var id = $("#hidID").val();
+var role = $("#ddlRoles").val();
+var loginName = $("#txtLoginName").val();
+var loginPass = $("#txtPassword").val();
+var fName = $("#txtFirstName").val();
+var lName = $("#txtLastName").val();
+var gender = $("#ddlGender").val();
+UpdateUser(id, loginName, loginPass, fName, lName, gender,role);
+$(this).dialog("destroy");
+},
+Cancel: function () { $(this).dialog("destroy"); }
+}
+});
+}
+function UpdateUser(id, logName, logPass, fName, lName, gender, role) {
+$.ajax({
+type: "POST",
+url: "@(Url.Action("UpdateUserData","Home"))",
+data: { userID: id, loginName: logName, password: logPass, firstName:
+fName, lastName: lName, gender: gender, roleID: role },
+success: function (data) {
+$("#divUserListContainer").load("@(Url.Action("ManagePelanggan","Home", new {
+status ="update" }))");},
+error: function (error) {
+//to do:
+}
+});
+} $
+("a.lnkEdit").on("click", function () {
+initDialog("Edit");
+$(".alert-success").empty();
+var row = $(this).closest('tr');
+$("#hidID").val(row.find("td:eq(0)").html().trim());
+$("#txtLoginName").val(row.find("td:eq(1)").html().trim())
+$("#txtPassword").val(row.find("td:eq(2)").html().trim())
+$("#txtFirstName").val(row.find("td:eq(3)").html().trim())
+$("#txtLastName").val(row.find("td:eq(4)").html().trim())
+$("#ddlGender").val(row.find("td:eq(5)").html().trim())
+$("#ddlRoles").val(row.find("td:eq(7) > input").val().trim());
+$("#divEdit").dialog("open");
+return false;
+});
+});
+</script>
+<span class="alert-success">@ViewBag.Message</span>

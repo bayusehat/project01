@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="51be1835a32a4997b66b991dadd64647" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="DBOutbondModel.laporan" Width="1.5" PointX="7.625" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.LOOKUPRole" Width="1.5" PointX="4.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.outbond" Width="1.5" PointX="4" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.pelanggan" Width="1.5" PointX="10.625" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.SYSUser" Width="1.5" PointX="9.875" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.SYSUserProfile" Width="1.5" PointX="12.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBOutbondModel.SYSUserRole" Width="1.5" PointX="7.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="DBOutbondModel.FK__laporan__id_outb__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="DBOutbondModel.FK__laporan__id_pela__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="DBOutbondModel.FK__SYSUserRo__LOOKU__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="DBOutbondModel.FK__SYSUserPr__SYSUs__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="DBOutbondModel.FK__SYSUserRo__SYSUs__37A5467C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2 @@
+﻿ALTER TABLE [dbo].[SYSUserProfile] WITH CHECK ADD FOREIGN KEY([SYSUserID])
+REFERENCES [dbo].[SYSUser] ([SYSUserID])
